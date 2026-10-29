@@ -1,0 +1,14 @@
+{
+  "settings": [
+    {
+      "key": "stats.player",
+      "name": "collection_settings/player",
+      "description": "collection_settings/player_hint",
+      "group": "collection_settings/player_group",
+      "type": "character",
+      "source": "characters",
+      "allow_custom": true,
+      "automatic": "collection_settings/player_auto"
+    }
+  ]
+}
