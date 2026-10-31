@@ -10,10 +10,12 @@ Mở bằng biểu tượng bảng trên thanh công cụ.
 
 ![Bảng nhân vật trong RPG Plus: Anh hùng — Chiến binh cấp 1 với 0/20 kinh nghiệm; Thuộc tính (Sức mạnh 9, Nhanh nhẹn 5, Trí tuệ 2, Thể lực 8, Sức hút 4, May mắn 4), Chiến đấu (Máu 42 +4, Mana 6/6, Tấn công 12 +2, Giáp 4, Ma thuật 3) và khối Trang bị với thanh kiếm gỗ.](assets/sheet.jpg)
 
-- **Đội** bên trái: toàn bộ thành viên đội cùng cấp của họ.
+- **Đội** bên trái, khi có từ hai nhân vật trở lên: bấm tên để xem bảng của nhân vật đó. Người đang xem được tô sáng, đội trưởng (nhân vật của người chơi) có ghi «đội trưởng».
 - **Lớp, cấp và kinh nghiệm** ở trên, kèm mô tả lớp nhân vật.
 - **Chỉ số chia theo nhóm**, tên do game đặt. Con số xanh nhỏ là phần đến từ cộng thêm — trang bị, đặc tính của lớp. Chỉ số tiêu hao rồi hồi lại, như mana, hiển thị hiện tại / tối đa.
-- **Các khối của mod khác** bên dưới, ví dụ khối Trang bị với các nút **Tháo**.
+- **Khối của mod khác** bên dưới, ví dụ Trang bị với các nút Trang bị, Thay và Tháo.
+
+![Bảng nhân vật với hai nhân vật: danh sách đội bên trái có Hero (đội trưởng) và Ally; người đang xem được tô sáng.](assets/sheet-party.png)
 
 ## Một lựa chọn, hai nhân vật khác nhau
 

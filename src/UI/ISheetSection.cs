@@ -27,5 +27,10 @@ namespace Cthangover.Mods.Stats
 
         /// <summary>Adds the block's rows for <paramref name="characterId"/> to the empty <paramref name="container"/>.</summary>
         void Build(VBoxContainer container, string characterId);
+
+        /// <summary>The sheet was opened again: drop transient state such as an open picker.</summary>
+        void Reset()
+        {
+        }
     }
 }

@@ -10,10 +10,12 @@ Se abre con el icono de la hoja en la barra de herramientas.
 
 ![La hoja de personaje en RPG Plus: el Héroe, un Guerrero de nivel 1 con 0 de 20 de experiencia; Atributos (Fuerza 9, Agilidad 5, Inteligencia 2, Vitalidad 8, Carisma 4, Suerte 4), Combate (Salud 42 +4, Maná 6/6, Ataque 12 +2, Armadura 4, Magia 3) y el bloque de Equipo con la espada de madera.](assets/sheet.jpg)
 
-- **Grupo** a la izquierda: todos los miembros del grupo, con su nivel.
+- **Grupo** a la izquierda, cuando hay dos héroes o más: pulsa un nombre para ver la hoja de ese héroe. El héroe mostrado queda resaltado, y el líder, el héroe del jugador, va marcado como «líder».
 - **Clase, nivel y experiencia** arriba, con la descripción de la clase.
 - **Estadísticas agrupadas**, con los nombres que dé el juego. Un numerito verde es la parte que viene de bonificaciones: el equipo, los rasgos de la clase. Las estadísticas que se gastan y se rellenan, como el maná, muestran actual / máximo.
-- **Bloques de otros mods** debajo, como Equipo con sus botones **Quitar**.
+- **Bloques de otros mods** abajo, como Equipo, con sus botones Equipar, Reemplazar y Quitar.
+
+![La hoja del personaje con dos héroes: a la izquierda la lista del grupo, Hero (líder) y Ally; el mostrado está resaltado.](assets/sheet-party.png)
 
 ## Una elección, dos héroes distintos
 
