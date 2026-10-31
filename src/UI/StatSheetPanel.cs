@@ -29,6 +29,7 @@ namespace Cthangover.Mods.Stats
         private Panel rule;
         private Label title;
         private Button closeButton;
+        private Control partyColumn;
         private Label partyLabel;
         private VBoxContainer partyList;
         private TextureRect portrait;
@@ -79,7 +80,13 @@ namespace Cthangover.Mods.Stats
             }
             var party = Party();
             if (selected == null || !party.Contains(selected))
-                selected = party.FirstOrDefault();
+            {
+                // Opening the sheet shows the leader first, whatever the roster order is.
+                var leader = StatsService.Resolve(null);
+                selected = party.Contains(leader) ? leader : party.FirstOrDefault();
+            }
+            foreach (var section in SheetSections.All)
+                section.Reset();
             Render();
         }
 
@@ -133,9 +140,18 @@ namespace Cthangover.Mods.Stats
         private void RenderParty()
         {
             Clear(partyList);
-            foreach (var id in Party())
+            // One hero needs no list: the sheet already shows that hero, so the column is
+            // hidden and the sheet keeps the full width. From two members on it is a switch.
+            var party = Party();
+            var leader = StatsService.Resolve(null);
+            if (partyColumn != null)
+                partyColumn.Visible = party.Count > 1;
+            foreach (var id in party)
             {
-                var button = UiKit.Button($"{NameOf(id)}  ·  {string.Format(Tr("stats/sheet/level_short"), StatsService.LevelOf(id))}");
+                var text = $"{NameOf(id)}  ·  {string.Format(Tr("stats/sheet/level_short"), StatsService.LevelOf(id))}";
+                if (string.Equals(id, leader, StringComparison.OrdinalIgnoreCase))
+                    text += "  ·  " + Tr("stats/sheet/leader");
+                var button = UiKit.Button(text);
                 button.ToggleMode = true;
                 button.ButtonPressed = id == selected;
                 button.Alignment = HorizontalAlignment.Left;
@@ -265,6 +281,7 @@ namespace Cthangover.Mods.Stats
             rule = GetNodeOrNull<Panel>(root + "/Rule");
             title = GetNodeOrNull<Label>(root + "/Header/Title");
             closeButton = GetNodeOrNull<Button>(root + "/Header/CloseButton");
+            partyColumn = GetNodeOrNull<Control>(root + "/Body/Party");
             partyLabel = GetNodeOrNull<Label>(root + "/Body/Party/PartyLabel");
             partyList = GetNodeOrNull<VBoxContainer>(root + "/Body/Party/PartyList");
             portrait = GetNodeOrNull<TextureRect>(main + "/Hero/Portrait");

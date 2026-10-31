@@ -10,10 +10,12 @@ Open it with the sheet icon on the toolbar.
 
 ![The character sheet in RPG Plus: the Hero, a Warrior of level 1 with 0 of 20 experience; Attributes (Strength 9, Agility 5, Intelligence 2, Vitality 8, Charisma 4, Luck 4), Combat (Health 42 +4, Mana 6/6, Attack 12 +2, Armour 4, Magic 3) and the Equipment block with the wooden sword.](assets/sheet.jpg)
 
-- **Party** on the left: everyone in the party, with their level.
+- **Party** on the left, once there are two heroes or more: click a name to show that hero's sheet. The shown hero is highlighted, and the leader, the player's hero, is marked as leader.
 - **Class, level and experience** at the top, with the class description.
 - **Stats in groups**, named by the game. A small green number is the part that comes from bonuses — gear, the class's traits. Stats that are spent and refilled, like mana, show current / maximum.
-- **Blocks of other mods** below, such as Equipment with its Take off buttons.
+- **Blocks of other mods** below, such as Equipment with its Equip, Replace and Take off buttons.
+
+![The character sheet with two heroes: the party list on the left shows Hero (leader) and Ally; the shown member is highlighted.](assets/sheet-party.png)
 
 ## One choice, two different heroes
 
@@ -89,3 +91,7 @@ Stats with `Binds` are written into the battle numbers of party members, so both
 1. **A stat shows 0.** Its formula names a stat that does not exist (unknown names count as 0); the log reports a broken formula once.
 2. **A character does not level up.** Only characters with an archetype level up, unless the game's setting `stats.leveling` is `all`.
 3. **Battle numbers did not change.** The stat needs `Binds`, and the character must take part in stats (an archetype, own stats or traits, or worn gear).
+
+## Shared expressions
+
+Numeric expressions are supplied by `expressions_base`. See the [Expression Engine guide](../../expressions_base/docs/en.md) for syntax, strict assignments and mod-defined strategies.
