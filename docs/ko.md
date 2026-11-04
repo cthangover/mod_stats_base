@@ -45,8 +45,13 @@ Classic RPG Rules의 전사 원형:
 그리고 그 능력치 둘:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 레벨 1 전사는 힘 7 + 2 = **9**, 활력 6 + 2 = **8**입니다. 체력은 12 + 8 × 3 + 2 = 38이고 전사의 특성이 10%를 더해 **42**, 그러니까 시트의 "+4"가 됩니다. 공격은 9 + 1 = 10에 나무 검 특성의 2를 더해 **12**. 메이지의 숫자는 같은 능력치와 메이지 원형에서 나옵니다.
@@ -91,3 +96,7 @@ when "stat(rpg_hero, cha) >= 8" -> :charming
 1. **능력치가 0으로 보인다.** 그 공식이 존재하지 않는 능력치를 부르고 있습니다(모르는 이름은 0). 깨진 공식은 로그에 한 번 보고됩니다.
 2. **캐릭터가 레벨업하지 않는다.** 레벨은 원형이 있는 캐릭터만 오릅니다. 게임 설정 `stats.leveling`이 `all`이면 예외입니다.
 3. **전투 수치가 바뀌지 않았다.** 능력치에 `Binds`가 필요하고, 캐릭터는 능력치에 참여해야 합니다(원형, 고유 능력치나 특성, 착용 장비).
+
+## 공통 표현식
+
+`expressions_base`가 계산을 제공합니다. `set money=rnd(3,5)`는 양 끝을 포함한 정수, `cset total "1+2+${money}"`는 식의 결과를 저장합니다. `set name value`는 문자열을 그대로 저장합니다. 오류가 나면 의존 액션 전에 대화를 멈춥니다. 문법과 확장은 [표현식 엔진 가이드](../../expressions_base/docs/en.md)를 참고하세요.

@@ -45,8 +45,13 @@ Nguyên mẫu Chiến binh trong Classic RPG Rules:
 và hai chỉ số của nó:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 Ở cấp 1, Chiến binh có Sức mạnh 7 + 2 = **9** và Thể lực 6 + 2 = **8**. Máu là 12 + 8 × 3 + 2 = 38, đặc tính của Chiến binh cộng thêm 10% — **42**, chính là "+4" trên bảng. Tấn công là 9 + 1 = 10, cộng 2 từ đặc tính của kiếm gỗ — **12**. Con số của Pháp sư đến từ những chỉ số ấy cùng nguyên mẫu Pháp sư.
@@ -91,3 +96,7 @@ Chỉ số có `Binds` được ghi vào con số chiến đấu của thành vi
 1. **Một chỉ số hiện 0.** Công thức của nó gọi một chỉ số không tồn tại (tên lạ tính bằng 0); nhật ký báo công thức hỏng một lần.
 2. **Nhân vật không lên cấp.** Chỉ nhân vật có nguyên mẫu mới lên cấp, trừ khi cài đặt `stats.leveling` của game là `all`.
 3. **Con số chiến đấu không đổi.** Chỉ số cần `Binds`, và nhân vật phải tham gia hệ thống chỉ số (có nguyên mẫu, chỉ số hoặc đặc tính riêng, hoặc đang mang trang bị).
+
+## Biểu thức dùng chung
+
+`expressions_base` cung cấp phép tính: `set money=rnd(3,5)` lưu số nguyên gồm hai đầu mút, `cset total "1+2+${money}"` tính biểu thức. `set name value` vẫn lưu chuỗi nguyên văn. Lỗi dừng hội thoại trước hành động phụ thuộc. Xem [hướng dẫn bộ biểu thức](../../expressions_base/docs/en.md) về cú pháp và mở rộng.

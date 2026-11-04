@@ -45,8 +45,13 @@ Classic RPG Rules におけるウォリアーのアーキタイプ:
 そしてステータス 2 つ:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 レベル 1 のウォリアーは、筋力 7 + 2 = **9**、体力 6 + 2 = **8**。HP は 12 + 8 × 3 + 2 = 38 で、ウォリアーの特性が 10% 加えて **42**。シートの「+4」の正体です。攻撃は 9 + 1 = 10 に、木剣の特性の 2 を足して **12**。メイジの数字は、同じステータスとメイジのアーキタイプから出ています。
@@ -91,3 +96,7 @@ when "stat(rpg_hero, cha) >= 8" -> :charming
 1. **ステータスが 0 になる。** その式が存在しないステータスを参照しています（知らない名前は 0）。壊れた式はログに 1 回だけ報告されます。
 2. **キャラクターがレベルアップしない。** レベルが上がるのはアーキタイプを持つキャラクターだけです。ゲーム設定 `stats.leveling` が `all` であれば別です。
 3. **戦闘数値が変わらない。** ステータスに `Binds` が必要で、かつキャラクターがステータスに参加している（アーキタイプ、固有のステータスか特性、装備のいずれか）必要があります。
+
+## 共通の式
+
+`expressions_base` が計算を提供します。`set money=rnd(3,5)` は両端を含む整数、`cset total "1+2+${money}"` は式の結果を保存します。`set name value` は文字列のままです。誤りがあれば後続のアクションの前に会話を停止します。構文と拡張は[式エンジンのガイド](../../expressions_base/docs/en.md)を参照してください。
