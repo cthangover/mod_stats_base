@@ -45,8 +45,13 @@ The warrior archetype in Classic RPG Rules:
 and two of its stats:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 At level 1 the warrior has Strength 7 + 2 = **9** and Vitality 6 + 2 = **8**. Health is 12 + 8 × 3 + 2 = 38, and the warrior's trait adds 10% — **42**, the "+4" on the sheet. Attack is 9 + 1 = 10, plus 2 from the wooden sword's trait — **12**. The mage's numbers come from the same stats and the mage archetype.

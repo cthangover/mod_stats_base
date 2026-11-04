@@ -45,8 +45,13 @@ El arquetipo de guerrero en Classic RPG Rules:
 y dos de sus estadísticas:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 En el nivel 1, el guerrero tiene Fuerza 7 + 2 = **9** y Vitalidad 6 + 2 = **8**. La salud es 12 + 8 × 3 + 2 = 38, y el rasgo del guerrero añade un 10%: **42**, el «+4» de la hoja. El ataque es 9 + 1 = 10, más 2 del rasgo de la espada de madera: **12**. Los números del mago salen de las mismas estadísticas y del arquetipo de mago.
@@ -91,3 +96,7 @@ Las estadísticas con `Binds` se escriben en los números de combate de los miem
 1. **Una estadística muestra 0.** Su fórmula nombra una estadística que no existe (los nombres desconocidos valen 0); el registro informa de la fórmula rota una sola vez.
 2. **Un personaje no sube de nivel.** Solo suben de nivel los personajes con arquetipo, salvo que el ajuste `stats.leveling` del juego sea `all`.
 3. **Los números de combate no cambiaron.** La estadística necesita `Binds`, y el personaje debe participar en las estadísticas (un arquetipo, estadísticas o rasgos propios, o equipo puesto).
+
+## Expresiones compartidas
+
+`expressions_base` aporta los cálculos: `set money=rnd(3,5)` guarda un entero inclusivo, `cset total "1+2+${money}"` calcula una expresión. `set name value` conserva texto literal. Los errores detienen el diálogo antes de las acciones dependientes. Véase la [guía del motor de expresiones](../../expressions_base/docs/en.md) para la sintaxis y las extensiones.

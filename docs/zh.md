@@ -45,8 +45,13 @@ Classic RPG Rules 中的战士原型：
 以及它的两个属性：
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 1 级战士的力量是 7 + 2 = **9**，体质是 6 + 2 = **8**。生命为 12 + 8 × 3 + 2 = 38，战士的特性再加 10%——**42**，也就是面板上的"+4"。攻击为 9 + 1 = 10，加上木剑特性的 2——**12**。法师的数字来自同样的属性和法师原型。
@@ -91,3 +96,7 @@ when "stat(rpg_hero, cha) >= 8" -> :charming
 1. **某个属性显示 0。** 它的公式引用了不存在的属性（陌生名字按 0 计）；日志会就坏掉的公式报告一次。
 2. **角色不升级。** 只有带原型的角色会升级，除非游戏设置 `stats.leveling` 为 `all`。
 3. **战斗数值没有变化。** 属性需要 `Binds`，而且角色必须参与属性系统（有原型、自有属性或特性，或穿着装备）。
+
+## 共享表达式
+
+`expressions_base` 提供计算：`set money=rnd(3,5)` 保存含端点的随机整数，`cset total "1+2+${money}"` 计算表达式。`set name value` 仍保存字面文本。错误会在后续依赖动作执行前停止对话。语法及扩展见[表达式引擎指南](../../expressions_base/docs/en.md)。

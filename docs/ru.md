@@ -45,8 +45,13 @@ action stat.archetype who=rpg_hero id=classic/warrior
 и два его стата:
 
 ```json
-{ "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
-{ "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+{
+  "Kind": "stat",
+  "Items": [
+    { "Id": "hp",  "Group": "combat", "Formula": "12 + vit * 3 + level * 2", "Min": 1, "Binds": "health" },
+    { "Id": "atk", "Group": "combat", "Formula": "str + level", "Min": 0, "Binds": "attack" }
+  ]
+}
 ```
 
 На 1-м уровне у воина Сила 7 + 2 = **9** и Стойкость 6 + 2 = **8**. Здоровье — 12 + 8 × 3 + 2 = 38, а черта воина добавляет 10% — **42**, те самые «+4» на листе. Атака — 9 + 1 = 10, плюс 2 от черты деревянного меча — **12**. Числа мага получаются из тех же статов и архетипа мага.
