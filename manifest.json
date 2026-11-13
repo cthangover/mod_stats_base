@@ -1,7 +1,7 @@
 {
   "id": "stats_base",
   "name": "Stats Engine",
-  "version": "1.0.0",
+  "version": "0.1.0",
   "author": "ct",
   "description": "A stats engine for any genre: stats, archetypes and traits as data, formulas for derived numbers, character sheets, levels and pools — handed to battles unchanged.",
   "category": "engine, library",
@@ -12,10 +12,10 @@
     "tests/*.cs"
   ],
   "depends": [
-    "characters_base>=1",
-    "shell2d_base>=1",
-    "ui_base>=1",
-    "expressions_base>=1"
+    "characters_base>=0.1.0",
+    "shell2d_base>=0.1.0",
+    "ui_base>=0.1.0",
+    "expressions_base>=0.1.0"
   ],
   "ui": [
     {
