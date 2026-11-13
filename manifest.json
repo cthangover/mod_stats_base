@@ -4,7 +4,7 @@
   "version": "0.1.0",
   "author": "ct",
   "description": "A stats engine for any genre: stats, archetypes and traits as data, formulas for derived numbers, character sheets, levels and pools — handed to battles unchanged.",
-  "category": "engine, library",
+  "categories": ["engine", "library"],
   "sources": [
     "src/**/*.cs"
   ],
