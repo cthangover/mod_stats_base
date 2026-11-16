@@ -49,9 +49,13 @@ namespace Cthangover.Mods.Stats
         public static ArchetypeInfo Archetype(string id)
             => string.IsNullOrWhiteSpace(id) ? null : Find(Entities.Collect<ArchetypeInfo>(), id);
 
-        /// <summary>The character template <paramref name="id"/>, or null.</summary>
+        /// <summary>
+        /// Returns an optional character template; free protagonists can own stats without a character catalogue.
+        /// </summary>
         public static CharacterInfo Template(string id)
-            => string.IsNullOrWhiteSpace(id) ? null : Find(Entities.Collect<CharacterInfo>(), id);
+        {
+            return string.IsNullOrWhiteSpace(id) ? null : Find(Entities.Collect<CharacterInfo>(required: false), id);
+        }
 
         /// <summary>
         /// Resolves a "who": <c>player</c> (or empty) → the player id; anything else is a
