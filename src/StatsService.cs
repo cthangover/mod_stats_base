@@ -6,6 +6,7 @@ namespace Cthangover.Mods.Stats
     using Cthangover.Core.Characters;
     using Cthangover.Core.Events;
     using Cthangover.Core.Games;
+    using Cthangover.Core.Mods.Memory;
     using Cthangover.Core.Mods.Resolvers;
     using Cthangover.Core.Scenes;
     using Cthangover.Core.Settings;
@@ -32,9 +33,15 @@ namespace Cthangover.Mods.Stats
         /// <summary>The free id of a protagonist without a party card.</summary>
         public const string FreePlayerId = "player";
 
-        private static readonly Dictionary<string, StatSheet> Sheets = new(StringComparer.OrdinalIgnoreCase);
+        private static readonly DictionaryCache<string, StatSheet> Sheets = new(StringComparer.OrdinalIgnoreCase, PreviewSheet);
         private static object snapshot;
         private static bool notifying;
+
+        static StatsService()
+            => ModMemoryService.Shared.TryFor(typeof(StatsService).Assembly)?.Track("stat_sheets", Sheets);
+
+        private static MemoryPreviewEntry PreviewSheet(string id, StatSheet sheet)
+            => new(id, FormattableString.Invariant($"level={sheet.Level}, stats={sheet.Values.Count}"));
 
         /// <summary>Stat definitions by id, sorted for display (order, then id).</summary>
         public static IReadOnlyList<StatInfo> Definitions =>
